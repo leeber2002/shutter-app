@@ -9,99 +9,61 @@
 </head>
 <body>
 	<div class="picWrapper cf">
-		<div class="picSelector fLeft cf">
-			<h2>Select Shutter</h2>
-			<div class="bPic bahamaBPic mb">
-				<img class="shutters shutter1" src="bahama.png" alt="">
-				<div class="resWrap rw1">
-					<div class='resizable res1 draggable'>
-						<div class="ui-resizable-handle ui-resizable-nw"></div>
-						<div class="ui-resizable-handle ui-resizable-ne"></div>
-						<div class="ui-resizable-handle ui-resizable-sw"></div>
-						<div class="ui-resizable-handle ui-resizable-se"></div>
-						<div class="ui-resizable-handle ui-resizable-n"></div>
-						<div class="ui-resizable-handle ui-resizable-s"></div>
-						<div class="ui-resizable-handle ui-resizable-e"></div>
-						<div class="ui-resizable-handle ui-resizable-w"></div>
-					</div>
-				</div>
-			</div>
-			<div class="bPic bnbBPic mb">
-				<img class="shutters shutter2" src="boardnbatten.png" alt="">
-				<div class="resWrap rw2">
-					<div class='resizable res2 draggable'>
-						<div class="ui-resizable-handle ui-resizable-nw"></div>
-						<div class="ui-resizable-handle ui-resizable-ne"></div>
-						<div class="ui-resizable-handle ui-resizable-sw"></div>
-						<div class="ui-resizable-handle ui-resizable-se"></div>
-						<div class="ui-resizable-handle ui-resizable-n"></div>
-						<div class="ui-resizable-handle ui-resizable-s"></div>
-						<div class="ui-resizable-handle ui-resizable-e"></div>
-						<div class="ui-resizable-handle ui-resizable-w"></div>
-					</div>
-				</div>
-			</div>
-			<div class="bPic shakerBPic">
-				<img class="shutters shutter3" src="shaker.png" alt="">
-				<div class="resWrap rw3">
-					<div class='resizable res3 draggable'>
-						<div class="ui-resizable-handle ui-resizable-nw"></div>
-						<div class="ui-resizable-handle ui-resizable-ne"></div>
-						<div class="ui-resizable-handle ui-resizable-sw"></div>
-						<div class="ui-resizable-handle ui-resizable-se"></div>
-						<div class="ui-resizable-handle ui-resizable-n"></div>
-						<div class="ui-resizable-handle ui-resizable-s"></div>
-						<div class="ui-resizable-handle ui-resizable-e"></div>
-						<div class="ui-resizable-handle ui-resizable-w"></div>
-					</div>
-				</div>
-			</div>
+		<div style="width:20%;float:left;border:1px solid; height:400px">
+
+		  <div>
+		    <div class="tool tool-1"  contenteditable="true"></div>
+		    <br/>
+		    <div class="tool tool-2"  contenteditable="true"></div>
+		    <br/>
+		    <div class="tool tool-3"  contenteditable="true"></div>
+		  </div>
 		</div>
-		<div class="picDisplay fLeft cf">
-			<img id="homePic" alt="your image" src="house.jpg" />
+
+		<div style="width:78%;height:400px;float:right;border:1px solid;" class="canvas picDisplay">
+			<img id="homePic" alt="your image" src="house.jpg" id="homePic" />
 		</div>
-		<div class="picFooter">
+	<div class="picFooter">
 			<input type="file" onchange="document.getElementById('homePic').src = window.URL.createObjectURL(this.files[0])">
 		</div>
-	</div>
+
+
 	<script>
-		$( ".shutter1" ).click(function() {
-			$( ".rw1" ).clone(true).appendTo( ".bahamaBPic" );
-		});
-		$( ".shutter2" ).click(function() {
-			$( ".rw2" ).clone(true).appendTo( ".bnbBPic" );
-		});
-		$( ".shutter3" ).click(function() {
-			$( ".rw3" ).clone(true).appendTo( ".shakerBPic" );
-		});
+	   $(init);
+
+  function init() {
+    var diagram = [];
+    var canvas = $(".canvas");
+
+
+
+
+    $(".tool").draggable({
+      helper: "clone",
+      //cursor: "move",
+      cancel: false,
+    });
+    canvas.droppable({
+      drop: function(event, ui) {
+      	console.log(ui.helper.prop("outerHTML"))
+				
+        var new_signature = ui.helper.is('.ui-resizable') ?
+        	ui.helper
+          :
+        	$(ui.helper).clone().removeClass('tool ui-draggable ui-draggable-handle ui-draggable-dragging');
+        $(this).append(new_signature);
+        new_signature.draggable({
+          helper: false
+        }).resizable()
+
+      }
+    });
+
+  }
+
 	</script>
-	<script>
-		$('.resizable').resizable({
-		handles: {
-		    'nw': '.ui-resizable-nw',
-		    'ne': '.ui-resizable-ne',
-		    'sw': '.ui-resizable-sw',
-		    'se': '.ui-resizable-se',
-		    'n': '.ui-resizable-n',
-		    'e': '.ui-resizable-e',
-		    's': '.ui-resizable-s',
-		    'w': '.ui-resizable-w'
-		}
-		});
-		$( '.draggable' ).draggable().on('click', function(){
-		if ( $(this).is('.ui-draggable-dragging') ) {
-		    return;
-		} else {
-		    $(this).draggable( 'option', 'disabled', true );
-		    $(this).prop('contenteditable','true');
-		    $(this).css('cursor', 'text');
-		}
-		})
-		.on('blur', function(){
-		$(this).draggable( 'option', 'disabled', false);
-		$(this).prop('contenteditable','false');
-		$(this).css('cursor', 'move');
-		});
-	</script>
+
+
+
 </body>
 </html>
