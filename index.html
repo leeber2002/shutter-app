@@ -8,24 +8,31 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="picWrapper cf">
-		<div style="width:20%;float:left;border:1px solid; height:400px">
+	<div class="picWrapper cf" style="min-width: 1200px;">
+		<div class="wrap">
 
 		  <div>
+		  	<h2 class="picTitle">Bahama</h2>
 		    <div class="tool tool-1"  contenteditable="true"></div>
-		    <br/>
+		    <div class="tool tool-12"  contenteditable="true"></div>
+		    <div class="tool tool-13"  contenteditable="true"></div>
+		    <h2 class="picTitle">Board and Batten</h2>
 		    <div class="tool tool-2"  contenteditable="true"></div>
-		    <br/>
+		    <div class="tool tool-22"  contenteditable="true"></div>
+		    <div class="tool tool-23"  contenteditable="true"></div>
+		    <h2 class="picTitle">Shaker Style</h2>
 		    <div class="tool tool-3"  contenteditable="true"></div>
+		    <div class="tool tool-32"  contenteditable="true"></div>
+		    <div class="tool tool-33"  contenteditable="true"></div>
 		  </div>
 		</div>
 
-		<div style="width:78%;height:400px;float:right;border:1px solid;" class="canvas picDisplay">
-			<img id="homePic" alt="your image" src="house.jpg" id="homePic" />
+		<div class="canvas picDisplay">
+			<img id="homePic" alt="your image" src="house.jpg" />
 		</div>
 	<div class="picFooter">
-			<input type="file" onchange="document.getElementById('homePic').src = window.URL.createObjectURL(this.files[0])">
-		</div>
+		<input type="file" onchange="document.getElementById('homePic').src = window.URL.createObjectURL(this.files[0])">
+	</div>
 
 
 	<script>
@@ -58,9 +65,9 @@
 
       }
     });
+    $( ".ui-resizable-se" ).prop( "disabled", true );
 
   }
-
 	</script>
 
 
