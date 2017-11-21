@@ -7,8 +7,6 @@ html {
   position: relative;
   width: 10px;
   height: 10px;
-  border-right: 3px solid black;
-  border-bottom: 3px solid black;
   transform: translate(-10px,-9px);
   cursor: nwse-resize;
 }
@@ -20,7 +18,7 @@ html {
   position: absolute;
   top: 0px;
   left: 0px;
-
+  margin-top: 8px;
 }
 .picTitle {
   text-align: center;

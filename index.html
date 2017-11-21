@@ -10,7 +10,6 @@
 <body>
 	<div class="picWrapper cf" style="min-width: 1200px;">
 		<div class="wrap">
-
 		  <div>
 		  	<h2 class="picTitle">Bahama</h2>
 		    <div class="tool tool-1"  contenteditable="true"></div>
@@ -28,12 +27,12 @@
 		</div>
 
 		<div class="canvas picDisplay">
-			<img id="homePic" alt="your image" src="house.jpg" />
+			<img id="homePic" alt="your image" src="window.jpg" />
 		</div>
+	</div>
 	<div class="picFooter">
 		<input type="file" onchange="document.getElementById('homePic').src = window.URL.createObjectURL(this.files[0])">
 	</div>
-
 
 	<script>
 	   $(init);
@@ -66,6 +65,7 @@
       }
     });
     $( ".ui-resizable-se" ).prop( "disabled", true );
+    $( ".tool" ).prop( "disabled", true );
 
   }
 	</script>
