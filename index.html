@@ -37,9 +37,9 @@
 
 	<script>
 	   $(init);
+  	$('.homePic').on('dragstart', function(event) { event.preventDefault(); });
 
   function init() {
-  	$('.homePic').on('dragstart', function(event) { event.preventDefault(); });
     var diagram = [];
     var canvas = $(".canvas");
 
