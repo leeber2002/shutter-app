@@ -16,9 +16,8 @@ html {
   height:500px;
   width:400px;
   position: absolute;
-  top: 0px;
+  top: 8px;
   left: 0px;
-  margin-top: 8px;
 }
 .picTitle {
   text-align: center;
